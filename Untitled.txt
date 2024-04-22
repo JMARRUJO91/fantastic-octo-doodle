@@ -1,0 +1,142 @@
+/**
+ * URL Incrementer
+ * Copyright © 2020 Roy Six
+ * License: https://github.com/roysix/url-incrementer/blob/master/LICENSE
+ * This software is a copyrighted work and is governed by a proprietary-style license. You may wish to read it
+ */
+ 
+var Shortcuts = (() => {
+
+  const KEY_MODIFIERS = new Map([["Alt",0x1],["Control",0x2],["Shift",0x4],["Meta",0x8]]);
+
+  let button = undefined,
+      buttons3 = false,
+      clicks = 0,
+      timeouts = {},
+      items = {};
+
+  function setItems(items_) {
+    items = items_;
+  }
+
+  function keyupListener(event) {
+    if (isElementEditable(event.target)) {
+      return;
+    }
+    if      (keyPressed(event, items.keyIncrement)) { chrome.runtime.sendMessage({greeting: "performAction", action: "increment", "shortcut": "key"}); }
+    else if (keyPressed(event, items.keyDecrement)) { chrome.runtime.sendMessage({greeting: "performAction", action: "decrement", "shortcut": "key"}); }
+    else if (keyPressed(event, items.keyNext))      { chrome.runtime.sendMessage({greeting: "performAction", action: "next",      "shortcut": "key"}); }
+    else if (keyPressed(event, items.keyPrev))      { chrome.runtime.sendMessage({greeting: "performAction", action: "prev",      "shortcut": "key"}); }
+    else if (keyPressed(event, items.keyClear))     { chrome.runtime.sendMessage({greeting: "performAction", action: "clear",     "shortcut": "key"}); }
+    else if (keyPressed(event, items.keyReturn))    { chrome.runtime.sendMessage({greeting: "performAction", action: "return",    "shortcut": "key"}); }
+    else if (keyPressed(event, items.keyAuto))      { chrome.runtime.sendMessage({greeting: "performAction", action: "auto",      "shortcut": "key"}); }
+  }
+
+  function mousedownListener(event) {
+    clearTimeout(timeouts.mouseup2);
+    if (event.buttons === 3) {
+      buttons3 = true;
+      event.preventDefault();
+    } else {
+      buttons3 = false;
+    }
+    button = event.button;
+  }
+
+  function mouseupListener(event) {
+    if (isElementEditable(event.target)) {
+      return;
+    }
+    clearTimeout(timeouts.mouseup);
+    if (event.button === button) {
+      clicks++;
+      timeouts.mouseup = setTimeout(function() {
+        clicks = 0; }, items.mouseClickSpeed);
+    } else {
+      clicks = 0;
+    }
+    if      (mousePressed(event, items.mouseIncrement)) { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "increment", "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+    else if (mousePressed(event, items.mouseDecrement)) { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "decrement", "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+    else if (mousePressed(event, items.mouseNext))      { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "next",      "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+    else if (mousePressed(event, items.mousePrev))      { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "prev",      "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+    else if (mousePressed(event, items.mouseClear))     { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "clear",     "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+    else if (mousePressed(event, items.mouseReturn))    { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "return",    "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+    else if (mousePressed(event, items.mouseAuto))      { timeouts.mouseup2 = setTimeout(function() { chrome.runtime.sendMessage({greeting: "performAction", action: "auto",      "shortcut": "mouse"}); }, items.mouseClickSpeed); }
+  }
+
+  function contextmenuListener(event) {
+    if (buttons3) {
+      event.preventDefault();
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function isElementEditable(element) {
+    let editable = false;
+    const name = element && element.nodeName ? element.nodeName.toUpperCase() : "";
+    if ((element && element.isContentEditable) || (name === "INPUT" || name === "TEXTAREA" || name === "SELECT")) {
+      editable = true;
+    }
+    return editable;
+  }
+
+  function keyPressed(event, key) {
+    return key && event.code === key.code &&
+      (!(event.altKey   ^ (key.modifiers & KEY_MODIFIERS.get("Alt"))         ) &&
+       !(event.ctrlKey  ^ (key.modifiers & KEY_MODIFIERS.get("Control")) >> 1) &&
+       !(event.shiftKey ^ (key.modifiers & KEY_MODIFIERS.get("Shift"))   >> 2) &&
+       !(event.metaKey  ^ (key.modifiers & KEY_MODIFIERS.get("Meta"))    >> 3));
+  }
+
+  function mousePressed(event, mouse) {
+    return mouse && (mouse.button === 3 ? buttons3 : event.button === mouse.button) && mouse.clicks === clicks;
+  }
+
+  function addKeyListener() {
+    removeKeyListener();
+    document.addEventListener("keyup", keyupListener);
+  }
+
+  function removeKeyListener() {
+    document.removeEventListener("keyup", keyupListener);
+  }
+
+  function addMouseListener() {
+    removeMouseListener();
+    document.addEventListener("mousedown", mousedownListener);
+    document.addEventListener("mouseup", mouseupListener);
+    document.addEventListener("contextmenu", contextmenuListener);
+  }
+
+  function removeMouseListener() {
+    document.removeEventListener("mousedown", mousedownListener);
+    document.removeEventListener("mouseup", mouseupListener);
+    document.removeEventListener("contextmenu", contextmenuListener);
+  }
+
+  if (!this.contentScriptExecuted) {
+    this.contentScriptExecuted = true;
+    chrome.storage.sync.get(null, function(items) {
+      if (items.permissionsInternalShortcuts) {
+        setItems(items);
+        if (items.keyEnabled) {
+          addKeyListener();
+        }
+        if (items.mouseEnabled) {
+          addMouseListener();
+        }
+        chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+          switch (request.greeting) {
+            case "addKeyListener": addKeyListener(); break;
+            case "removeKeyListener": removeKeyListener(); break;
+            case "addMouseListener": addMouseListener(); break;
+            case "removeMouseListener": removeMouseListener(); break;
+          }
+        });
+      }
+    });
+  }
+
+})();
