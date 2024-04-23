@@ -1,0 +1,121 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.015 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.079 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 41
+
+Microsoft (R) Windows Debugger Version 10.0.27553.1004 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 0000019f`7c7b0000 0000019f`7c816000   C:\Program Files\WindowsApps\Microsoft.PowerAutomateDesktop_11.2403.237.0_x64__8wekyb3d8bbwe\PAD.BrowserNativeMessageHost.exe
+ModLoad: 00007ff8`713b0000 00007ff8`715c6000   C:\WINDOWS\SYSTEM32\ntdll.dll
+ModLoad: 00007ff8`64050000 00007ff8`640bb000   C:\WINDOWS\SYSTEM32\MSCOREE.DLL
+ModLoad: 00007ff8`6fc40000 00007ff8`6fd04000   C:\WINDOWS\System32\KERNEL32.dll
+ModLoad: 00007ff8`6e740000 00007ff8`6eae7000   C:\WINDOWS\System32\KERNELBASE.dll
+ModLoad: 00007ff8`6f190000 00007ff8`6f242000   C:\WINDOWS\System32\ADVAPI32.dll
+ModLoad: 00007ff8`6f0e0000 00007ff8`6f187000   C:\WINDOWS\System32\msvcrt.dll
+ModLoad: 00007ff8`6f8a0000 00007ff8`6f948000   C:\WINDOWS\System32\sechost.dll
+ModLoad: 00007ff8`6eaf0000 00007ff8`6eb18000   C:\WINDOWS\System32\bcrypt.dll
+ModLoad: 00007ff8`703e0000 00007ff8`704f5000   C:\WINDOWS\System32\RPCRT4.dll
+ModLoad: 00007ff8`638d0000 00007ff8`6396b000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscoreei.dll
+ModLoad: 00007ff8`6f3c0000 00007ff8`6f41e000   C:\WINDOWS\System32\SHLWAPI.dll
+ModLoad: 00007ff8`6d6d0000 00007ff8`6d6e8000   C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ff8`67510000 00007ff8`6751a000   C:\WINDOWS\SYSTEM32\VERSION.dll
+ModLoad: 00007ff8`60c80000 00007ff8`61624000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clr.dll
+ModLoad: 00007ff8`711c0000 00007ff8`7136e000   C:\WINDOWS\System32\USER32.dll
+ModLoad: 00007ff8`6eb20000 00007ff8`6eb46000   C:\WINDOWS\System32\win32u.dll
+ModLoad: 00007ff8`6fc00000 00007ff8`6fc29000   C:\WINDOWS\System32\GDI32.dll
+ModLoad: 00007ff8`6ee20000 00007ff8`6ef39000   C:\WINDOWS\System32\gdi32full.dll
+ModLoad: 00007ff8`6ed80000 00007ff8`6ee1a000   C:\WINDOWS\System32\msvcp_win.dll
+ModLoad: 00007ff8`6ef40000 00007ff8`6f051000   C:\WINDOWS\System32\ucrtbase.dll
+ModLoad: 00007ff8`65640000 00007ff8`6564c000   C:\WINDOWS\SYSTEM32\VCRUNTIME140_1_CLR0400.dll
+ModLoad: 00007ff8`60c60000 00007ff8`60c7b000   C:\WINDOWS\SYSTEM32\VCRUNTIME140_CLR0400.dll
+ModLoad: 00007ff8`60af0000 00007ff8`60bbd000   C:\WINDOWS\SYSTEM32\ucrtbase_clr0400.dll
+ModLoad: 00007ff8`6fbc0000 00007ff8`6fbf1000   C:\WINDOWS\System32\IMM32.DLL
+ModLoad: 00007ff8`6f950000 00007ff8`6f958000   C:\WINDOWS\System32\psapi.dll
+ModLoad: 00007ff8`5ac50000 00007ff8`5c25f000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\mscorlib\448a486950dceb6a540939cbe7df7d2c\mscorlib.ni.dll
+ModLoad: 00007ff8`706e0000 00007ff8`70885000   C:\WINDOWS\System32\ole32.dll
+ModLoad: 00007ff8`6f4a0000 00007ff8`6f828000   C:\WINDOWS\System32\combase.dll
+ModLoad: 00007ff8`6f060000 00007ff8`6f0d9000   C:\WINDOWS\System32\bcryptPrimitives.dll
+ModLoad: 00007ff8`6ddd0000 00007ff8`6ddeb000   C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+ModLoad: 00007ff8`6d630000 00007ff8`6d665000   C:\WINDOWS\system32\rsaenh.dll
+ModLoad: 00007ff8`6dd40000 00007ff8`6dd4c000   C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+ModLoad: 00007ff8`5a710000 00007ff8`5a83f000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clrjit.dll
+ModLoad: 00007ff8`313c0000 00007ff8`313e6000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\netstandard\167d90a05ecbd79382ebdf71a20353a0\netstandard.ni.dll
+ModLoad: 00007ff8`58ae0000 00007ff8`596fe000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System\95d0282b6c6403bae690dcd3e65e7fad\System.ni.dll
+ModLoad: 00007ff8`70960000 00007ff8`711bc000   C:\WINDOWS\System32\shell32.dll
+ModLoad: 00007ff8`6c5b0000 00007ff8`6cea9000   C:\WINDOWS\SYSTEM32\windows.storage.dll
+ModLoad: 00007ff8`6c470000 00007ff8`6c5ae000   C:\WINDOWS\SYSTEM32\wintypes.dll
+ModLoad: 00007ff8`70510000 00007ff8`70603000   C:\WINDOWS\System32\SHCORE.dll
+ModLoad: 00007ff8`65ae0000 00007ff8`65afa000   C:\WINDOWS\SYSTEM32\windows.staterepositorycore.dll
+ModLoad: 00007ff8`6e600000 00007ff8`6e621000   C:\WINDOWS\SYSTEM32\profapi.dll
+ModLoad: 00007ff8`56960000 00007ff8`573e6000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Core\a85edf146d386a1d27e22549b5e48043\System.Core.ni.dll
+ModLoad: 00007ff8`567f0000 00007ff8`56923000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Configuration\97747d2bc0c4b42b60656e5aafec09f6\System.Configuration.ni.dll
+ModLoad: 00007ff8`55820000 00007ff8`560d0000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Xml\40ead3992325f0a142f5eec943a8d25b\System.Xml.ni.dll
+ModLoad: 00007fff`faa50000 00007fff`fac43000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Drawing\c176ea1793393d4f6d9c9b6af6e6c20f\System.Drawing.ni.dll
+ModLoad: 00007ff8`6b760000 00007ff8`6b80b000   C:\WINDOWS\system32\uxtheme.dll
+ModLoad: 00007ff8`51a80000 00007ff8`51be6000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Management\1decb5cf8c72298cc2a458104b873628\System.Management.ni.dll
+ModLoad: 00007fff`faa20000 00007fff`faa4f000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\wminet_utils.dll
+ModLoad: 00007ff8`6fac0000 00007ff8`6fb97000   C:\WINDOWS\System32\OLEAUT32.dll
+ModLoad: 00007ff8`708b0000 00007ff8`70960000   C:\WINDOWS\System32\clbcatq.dll
+ModLoad: 00007ff8`565d0000 00007ff8`565f4000   C:\WINDOWS\system32\wbem\wmiutils.dll
+ModLoad: 00007ff8`583a0000 00007ff8`58420000   C:\WINDOWS\SYSTEM32\wbemcomn.dll
+ModLoad: 00007ff8`58420000 00007ff8`58430000   C:\WINDOWS\system32\wbem\wbemprox.dll
+ModLoad: 00007ff8`56930000 00007ff8`56944000   C:\WINDOWS\system32\wbem\wbemsvc.dll
+ModLoad: 00007ff8`573f0000 00007ff8`574e8000   C:\WINDOWS\system32\wbem\fastprox.dll
+ModLoad: 00007ff8`4e6c0000 00007ff8`4e6dd000   C:\WINDOWS\SYSTEM32\amsi.dll
+ModLoad: 00007ff8`6dbd0000 00007ff8`6dbf8000   C:\WINDOWS\SYSTEM32\USERENV.dll
+ModLoad: 00007ff8`40710000 00007ff8`40791000   C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.24030.9-0\MpOav.dll
+ModLoad: 00007ff8`46a60000 00007ff8`46da3000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Runteb92aa12#\634b49f5190f5094b7962176cf595892\System.Runtime.Serialization.ni.dll
+ModLoad: 00007ff8`3f2f0000 00007ff8`3f341000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Numerics\f3a1f609876b905c0f8892db5aaa7cb3\System.Numerics.ni.dll
+ModLoad: 00007ff8`3f6c0000 00007ff8`40043000   C:\WINDOWS\assembly\NativeImages_v4.0.30319_64\System.Data\c4e61936edc62fdfbba08c139f728cd4\System.Data.ni.dll
+ModLoad: 00007ff8`3f350000 00007ff8`3f6ba000   C:\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll
+ModLoad: 00007ff8`6f420000 00007ff8`6f491000   C:\WINDOWS\System32\WS2_32.dll
+ModLoad: 00007ff8`6ec10000 00007ff8`6ed77000   C:\WINDOWS\System32\CRYPT32.dll
+ModLoad: 00007ff8`52670000 00007ff8`527b1000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\diasymreader.dll
+(9f8.a90): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ff8`71453050 cc              int     3
+0:012> g
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
+(9f8.37b8): CLR exception - code e0434352 (first chance)
+(9f8.1d10): CLR exception - code e0434352 (first chance)
